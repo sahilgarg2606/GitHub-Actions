@@ -1,0 +1,26 @@
+name: python linter
+on:
+    push:
+        branches: [main]
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.9", "3.10", "3.11", "3.12"]
+        steps:
+          - name: code checkout
+            uses: actions/checkout@v4
+         
+          - name: setup python ${{ matrix.python-version }}
+            uses: actions/setup-python@v5
+            with: 
+                python-version: ${{ matrix.python-version }}
+           
+          - name: install dependencies
+            run: pip -r install requirements.txt
+         
+          - name: run linter
+            run: flake8 app.py
