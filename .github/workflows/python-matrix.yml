@@ -2,7 +2,7 @@ name: python-linter
 on:
   push: 
     branches:
-      - main 
+      - master 
 jobs:
    validate:
       runs-on: ubuntu-latest
