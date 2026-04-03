@@ -8,12 +8,12 @@ jobs:
             DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         runs-on: self-hosted
         steps:
-            - name: code checkout 
-              uses: actions/checkout@v4
+          - name: code checkout 
+            uses: actions/checkout@v4
             
-            - name: set up docker compose 
-              uses: docker/setup-compose-action@v2
+          - name: set up docker compose 
+            uses: docker/setup-compose-action@v2
 
-            - name: deploy with docker compose 
-              uses: docker compose down && docker compose up -d --build
+          - name: deploy with docker compose 
+            run: docker compose up -d --build 
             
