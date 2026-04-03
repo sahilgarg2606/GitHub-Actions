@@ -6,6 +6,7 @@ jobs:
         env: 
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
             DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+            DOCKERHUB_TAG: ${{ github.sha }}
         runs-on: self-hosted
         steps:
           - name: code checkout 
