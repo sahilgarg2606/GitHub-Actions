@@ -12,5 +12,9 @@ jobs:
       runs-on: ${{ matrix.os }}
       steps:
         - name: name of OS
+          id: step1
           run: echo "${{matrix.os}}"
-            
+        - name: check hostname of Running os
+          run: echo "${{ steps.step1.outputs.runner }}" 
+        - name: current jobs name
+          run: echo "${{github.job}}"
