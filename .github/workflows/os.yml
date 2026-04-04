@@ -17,6 +17,6 @@ jobs:
         - name: check hostname of Running os
           run: hostname
         - name: current user name
-          run: |
+          run: >
              echo "User:"
              whoami
