@@ -3,7 +3,7 @@ name: package checker
 on: 
     push:
         branches: 
-            - main
+            - master
 
 jobs:
     packageChecker:
