@@ -12,3 +12,17 @@ jobs:
          - name: working directory
            run: pwd
         
+         - name: create file 
+           run : |
+             echo "this is the test file" > file.txt
+             echo "file created : file.txt"
+
+         - name: verfiy 
+           run: |
+             if [ -f "file.txt"]; then
+                echo "file exists"
+             else
+                echo "doesnot exists"
+             fi
+
+        
