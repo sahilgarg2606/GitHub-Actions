@@ -1,0 +1,14 @@
+name: self hosting runner
+
+on: 
+    workflow_dispatch:
+jobs:
+    selfhoster:
+        runs-on: self-hosted
+        steps:
+         - name: Host Name
+           run: hostname
+         
+         - name: working directory
+           run: pwd
+        
