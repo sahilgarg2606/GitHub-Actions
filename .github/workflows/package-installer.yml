@@ -1,0 +1,17 @@
+name: package checker
+
+on: 
+    push:
+        branches: 
+            - main
+
+jobs:
+    packageChecker:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                package: ["docker","git","node","python"]
+        steps:
+            - name: ${{ matrix.package }} check
+              run: ${{matrix.package}} --version
+
