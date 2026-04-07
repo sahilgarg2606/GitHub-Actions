@@ -15,7 +15,7 @@ jobs:
               run: echo "previous code not worked"
     push-event:
         runs-on: ubuntu-latest
-        if: github.event_name == 'push'
+        if: github.event_name == 'pull'
         steps:
             - name: this is for push
               run: echo "push event triggered"
