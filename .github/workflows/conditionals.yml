@@ -13,3 +13,9 @@ jobs:
             - name: steps failed
               if: steps.step1.outcome != 'success'
               run: echo "previous code not worked"
+    push-event:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'push'
+        steps:
+            - name: this is for push
+              run: echo "push event triggered"
