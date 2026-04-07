@@ -1,0 +1,10 @@
+name: conditionals
+on: [push]
+
+jobs:
+    for-main:
+        runs-on: ubuntu-latest
+        steps:
+            - name: this is for master
+              if: github.ref ==  'refs/heads/master'
+              run: echo "this is for master branch"

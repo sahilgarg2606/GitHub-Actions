@@ -2,7 +2,7 @@ name: outputs
 on:
     push:
         branches:
-            - master
+            - main
 
 jobs:
    generate-date:
