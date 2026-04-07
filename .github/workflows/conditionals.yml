@@ -6,5 +6,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: this is for master
+              id: step1
               if: github.ref ==  'refs/heads/main'
               run: echo "this is for master branch"
+
+            - name: steps failed
+              if: steps.step1.outcome != 'success'
+              run: echo "previous code not worked"
