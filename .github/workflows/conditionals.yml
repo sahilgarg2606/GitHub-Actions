@@ -1,28 +1,48 @@
 name: conditionals
 on: [push]
 
+
 jobs:
-    for-main:
+    linting:
         runs-on: ubuntu-latest
         steps:
-            - name: this is for master
-              id: step1
-              if: github.ref ==  'refs/heads/master'
-              run: echo "this is for master branch"
-
-            - name: steps failed
-              if: steps.step1.outcome != 'success'
-              run: echo "previous code not worked"
-
-            - name: exit 1
-              run: exit 1
-              continue-on-error: false
-
+            - name: linting
+              run: echo "linting completed"
+    test:
+        runs-on: ubuntu-latest
+        steps:
             - name: testing
-              run: echo "testing passed"
-    push-event:
+              run: echo "testing"
+    summary:
+        needs: [linting, test]
         runs-on: ubuntu-latest
-        if: github.event_name == 'push'
         steps:
-            - name: this is for push
-              run: echo "push event triggered"
+            - name: summary
+              run: echo "code is pushed from ${{github.action_ref}}" |
+                   echo "code commit message ${{ github.event.commits[0].message }}"
+
+# jobs:
+#     for-main:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: this is for master
+#               id: step1
+#               if: github.ref ==  'refs/heads/master'
+#               run: echo "this is for master branch"
+
+#             - name: steps failed
+#               if: steps.step1.outcome != 'success'
+#               run: echo "previous code not worked"
+
+#             - name: exit 1
+#               run: exit 1
+#               continue-on-error: false
+
+#             - name: testing
+#               run: echo "testing passed"
+#     push-event:
+#         runs-on: ubuntu-latest
+#         if: github.event_name == 'push'
+#         steps:
+#             - name: this is for push
+#               run: echo "push event triggered"
