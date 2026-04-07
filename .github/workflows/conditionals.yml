@@ -7,7 +7,7 @@ jobs:
         steps:
             - name: this is for master
               id: step1
-              if: github.ref ==  'refs/heads/main'
+              if: github.ref ==  'refs/heads/master'
               run: echo "this is for master branch"
 
             - name: steps failed
