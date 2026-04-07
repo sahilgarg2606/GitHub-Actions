@@ -16,8 +16,8 @@ jobs:
 
             - name: exit 1
               run: exit 1
-              continue-on-error: true
-              
+              continue-on-error: false
+
             - name: testing
               run: echo "testing passed"
     push-event:
