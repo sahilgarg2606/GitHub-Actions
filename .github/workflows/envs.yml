@@ -19,4 +19,5 @@ jobs:
          echo ${APP_NAME}
          echo ${name}
          echo ${version}
-        
+         echo ${{ github.action }}
+         echo ${{ github.sha }}
