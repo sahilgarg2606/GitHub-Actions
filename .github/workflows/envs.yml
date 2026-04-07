@@ -1,0 +1,22 @@
+name: environment practices
+env:
+    APP_NAME: myApp
+
+on: 
+    push:
+        branches:
+            - main
+jobs:
+   build:
+    runs-on: ubuntu-latest
+    env: 
+        name: staging
+    steps: 
+      - name: version 1
+        env:
+            version: "1.0.0"
+        run: |
+         echo ${APP_NAME}
+         echo ${name}
+         echo ${version}
+        
