@@ -18,7 +18,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: summary
-              run: echo "code is pushed from ${{github.branch}}" |
+              run: echo "code is pushed from ${{ github.head_ref }}" |
                    echo "code commit message ${{ github.event.commits[0].message }}"
 
 # jobs:
