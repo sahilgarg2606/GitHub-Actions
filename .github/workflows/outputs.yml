@@ -1,0 +1,26 @@
+name: outputs
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+   generate-date:
+      runs-on: ubuntu
+      outputs:
+        date: ${{steps.set-date.outputs.date}}
+ 
+      steps:
+
+        - name: Generate the date
+          id: set-date
+          run:  echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+   set-date:
+        needs: 
+            - generate-date
+        runs-on: ubuntu-latest
+        steps:
+            - name: get the date
+              run: echo "previos job output is ${{needs.generate-date.outputs.date}}"
+        
