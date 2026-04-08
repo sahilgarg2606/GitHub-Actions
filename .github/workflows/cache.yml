@@ -18,5 +18,5 @@ jobs:
                 path: ~/.npm
                 key: npm-cache-${{ hashFiles('package-lock.json') }}
 
-            - name: install dependencies
+            - name: Install dependencies
               run: npm install
