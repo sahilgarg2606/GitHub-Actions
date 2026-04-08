@@ -16,4 +16,12 @@ jobs:
             - name: upload artifacts
               uses: actions/upload-artifact@v4
               with:
-                path: .
+                path: file.txt
+    download-artifacts:
+        runs-on: ubuntu-latest
+        steps:
+            - name: download report
+              uses: actions/download-artifact@v4
+              with:
+                path: file.txt
+            - run: cat file.txt
