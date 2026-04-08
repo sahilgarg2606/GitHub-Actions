@@ -16,6 +16,7 @@ jobs:
             - name: upload artifacts
               uses: actions/upload-artifact@v4
               with:
+                name: my-artifact
                 path: file.txt
     download-artifacts:
         runs-on: ubuntu-latest
@@ -23,5 +24,6 @@ jobs:
             - name: download report
               uses: actions/download-artifact@v4
               with:
+                name: my-artifact
                 path: file.txt
-            - run: cat file.txt
+            - run: ls -l
