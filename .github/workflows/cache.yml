@@ -12,7 +12,11 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v4
         
-            - name: cache node
+            - name: Cache node modules
               uses: actions/cache@v4
               with:
                 path: ~/.npm
+                key: npm-cache-${{ hashFiles('package-lock.json') }}
+
+            - name: install dependencies
+              run: npm install
