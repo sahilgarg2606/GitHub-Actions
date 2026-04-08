@@ -3,17 +3,32 @@ name: cache-demo
 on: push
 
 jobs:
-  cache-job:
-    runs-on: ubuntu-latest
+    script:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
 
-    steps:
-      - uses: actions/checkout@v4
+            - name: install
+              run: pip install -r requirements.txt
+            
+            - name: fails
+              run: |
+                 if [ -x "$(command -v docker)" ]; then
+                     exit 1
+                 else
+                    echo "Install docker"...
+#   cache-job:
+#     runs-on: ubuntu-latest
 
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: npm-cache-${{ hashFiles('package-lock.json') }}
+#     steps:
+#       - uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
+#       - name: Cache node modules
+#         uses: actions/cache@v4
+#         with:
+#           path: ~/.npm
+#           key: npm-cache-${{ hashFiles('package-lock.json') }}
+
+#       - name: Install dependencies
+#         run: npm install
