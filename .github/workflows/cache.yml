@@ -1,22 +1,19 @@
-name: cache
+name: cache-demo
 
-on: 
-    push:
-        branches:
-            - master
+on: push
 
 jobs:
-    cached:
-        runs-on: ubuntu-latest
-        steps:
-            - name: checkout code
-              uses: actions/checkout@v4
-        
-            - name: Cache node modules
-              uses: actions/cache@v4
-              with:
-                path: ~/.npm
-                key: npm-cache-${{ hashFiles('package-lock.json') }}
+  cache-job:
+    runs-on: ubuntu-latest
 
-            - name: Install dependencies
-              run: npm install
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm install
