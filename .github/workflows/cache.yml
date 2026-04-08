@@ -14,10 +14,12 @@ jobs:
             
             - name: fails
               run: |
-                 if [ -x "$(command -v docker)" ]; then
-                     exit 1
+                if command -v docker >/dev/null 2>&1; then
+                     echo "Docker is installed"
                  else
-                    echo "Install docker"...
+                    echo "Docker is NOT installed"
+                    exit 1
+                 fi
 #   cache-job:
 #     runs-on: ubuntu-latest
 
