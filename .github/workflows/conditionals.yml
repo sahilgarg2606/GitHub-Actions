@@ -1,5 +1,8 @@
 name: conditionals
-on: [push]
+on:
+    workflow_dispatch:
+        
+    #  [push]
 
 
 jobs:
@@ -19,7 +22,7 @@ jobs:
         steps:
             - name: summary
               run:  |
-                    echo "code is pushed from ${{ github.head_ref }}"
+                    echo "code is pushed from ${{ github.ref_name }}"
                     echo "code commit message ${{ github.event.commits[0].message }}"
 
 # jobs:
